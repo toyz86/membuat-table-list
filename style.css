@@ -14,6 +14,10 @@ table {
 
 }
 
+.selectedRow {
+    background-color: yellow;
+}
+
 thead {
     background-color: #0275d8;
     color: #ffffff;

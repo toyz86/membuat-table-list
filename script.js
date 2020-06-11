@@ -52,13 +52,13 @@ $(document).ready(function(){
 		var rowTable = $("number, name, address");
 		console.log("ini baris tabel", rowTable);
 		if(!$target.is('input:checkbox'))
+		console.log('$target', $target);
 		{
-			$(this).find('input:checkbox').each(function(){
+			$(this).find('input:checkbox').each(function () {
 				if(this.checked)this.checked = false;
 				else this.checked = true;
 			})
 		}
-		$(rowTable).css("background-color", "yellow");
+		$(this).closest('tr').find('td').toggleClass('selectedRow');
 	});
-
  })

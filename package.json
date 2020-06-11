@@ -1,0 +1,16 @@
+{
+  "name": "membuat-table-list",
+  "version": "1.0.0",
+  "description": "membuat tabel list menggunakan jquery",
+  "main": "script.js",
+  "repository": "https://github.com/toyz86/membuat-table-list.git",
+  "author": "gatotprastyo@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "jquery": "^3.5.1"
+  }
+}

@@ -1,11 +1,12 @@
 $(document).ready(function(){
 	$.getJSON("table.json", function(data){
 		var list_data = '';
-		$.each(data, function(key, value){
+		$.each(data, function(value){
 			list_data += '<tr>';
-			list_data += '<td>' +value.listNumber+'<td>';
-			list_data += '<td>' +value.name+'<td>';
-			list_data += '<td>' +value.address+'<td>';
+			list_data += '<td>' + value.input + '<td>';
+			list_data += '<td>' + value.listNumber+'<td>';
+			list_data += '<td>' + value.name+'<td>';
+			list_data += '<td>' + value.address+'<td>';
 		});
 		$('#data-tabel').append(list_data);
 		console.log('list data', list_data);

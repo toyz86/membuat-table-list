@@ -54,7 +54,6 @@ $(document).ready(function(){
 // Checked and unchecked list row
 	$('#data-tabel tr').click(function (event) {
 		let $target = $(event.target);
-		let rowTable = $("number, name, address");
 		if(!$target.is('input[type="checkbox"]'))
 		{
 			$(this).find('input[type="checkbox"]').each(function () {
@@ -71,9 +70,19 @@ $(document).ready(function(){
 	// 	// console.log('selected data', isChecked);
 	// });
 	$("#btnShowSelectedData").click(function() {
+		let rowTr = '';
+		for (let i = 1; i < allItems;) {
+			rowTr += '<tr>';
+			rowTr += '<td>' + '</td>';
+			rowTr += "<td>" + i + "</td>";
+			rowTr += "<td>" + "Nama" + "-" + i + "</td>";
+			rowTr += "<td>" + "Alamat" + "-" + i + "</td>";
+			rowTr += "</tr>";
+		}
 		var isChecked = $("checked");
-        console.log("selected data", isChecked);
-    	$("#table-selected-data tbody td").append(isChecked);
+		console.log("selected data", isChecked);
+		let rowTable = $("number, name, address");
+    	$("#table-selected-data tbody td").append(rowTr);
   	});
 
 	// $("#btnShowSelectedData").click(function() {

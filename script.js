@@ -1,65 +1,83 @@
 $(document).ready(function(){
-	$.getJSON("table.json", function(data){
-		var list_data = '';
-		$.each(data, function(value){
-			list_data += '<tr>';
-			list_data += '<td>' + value.input + '<td>';
-			list_data += '<td>' + value.listNumber+'<td>';
-			list_data += '<td>' + value.name+'<td>';
-			list_data += '<td>' + value.address+'<td>';
-		});
-		$('#data-tabel').append(list_data);
-		console.log('list data', list_data);
-	});
-	
-	var number = $(".number");
-	var name = $(".name");
-	var address = $(".address");
+	const allItems = 50;
+	$('#data-tabel').each(function (append) {
+		let rowTr = '';
+		for (let i = 1; i < allItems; i++) {
+			rowTr += '<tr>';
+			rowTr += '<td>' + '<input type="checkbox">' + '</td>';
+			rowTr += "<td>" + i + "</td>";
+			rowTr += "<td>" + "Nama" + "-" + i + "</td>";
+			rowTr += "<td>" + "Alamat" + "-" + i + "</td>";
+			rowTr += "</tr>";
+		}
+		$('#data-tabel').append(rowTr);
+	})
 
-	$(".number").html($("td").index(number));
-	$(".name").html("Nama" + "-" + $("td").index(number));
-	$(".address").html("Alamat" + "-" + $("td").index(number));
+	console.log("allItems", allItems);
+	let perPage = 10;
+	let totalPages = Math.ceil(allItems/perPage);
+	console.log('total halaman', totalPages);
+	  
+	$("#data-tabel tbody tr").hide();
+	$("#data-tabel tbody tr").slice(0, perPage).show();
+	let currentPage = $(".pagination").index() - 1;
+	console.log("halaman", currentPage);
+ 
+	$("#btnNext").click(function(){
+		currentPage ++;
+		console.log('halaman', currentPage);
+		let startPage = currentPage * perPage;
+		console.log('startPage', startPage);
+		let endPage = startPage + perPage;
+		console.log('endPage', endPage);
+		
+		for (i = 0;i < totalPages ; i++){
+			console.log('asasasasasa', i);
+			$("#data-tabel tbody tr").hide().slice(startPage, endPage).show();
+		};
+	})
 
-	// $("#data-tabel").each(function(append){
-	// 	var baris = $("<td>");
-	// 	console.log('baris', baris);
-	// 	var i;
-	// 	for (i = 0; i < 10; i++) {
-	// 	baris += "Nama" + i + '<td>';
-	// }
-	// })
-
-	// $("#check-all, thead").click(function(event){
-	// 	var tableHead = $('<thead>');
-	// 	console.log('tabel head', tableHead);
-	// 	$.not(this)
-	// 	.closest("#data-tabel")
-	// 	.find('input:checkbox')
-	// 	.prop("checked", this.checked)
-	// 	.closest("#table-value");
-	// });  
-
-	// $("#data-tabel tr").click(function(){
-	// var rowTr = $(this).data('index');
-	// var selected = $(`#data-tabel [data-index='${rowTr}']`);
-	// console.log(selected.find('input[type="checkbox"]'));
-	// $(selected.find('input[type="checkbox"]').attr('checked', true));
-	// console.log('asasasa', selected.find('input[type="checkbox"]').attr('checked', true));
-	// })
+	$("#btnPrev").click(function(){
+		currentPage --;
+		console.log('halaman', currentPage);
+		let startPage = currentPage * perPage;
+		console.log('startPage', startPage);
+		let endPage = startPage + perPage;
+		console.log('endPage', endPage);
+		
+		for (i = 0;i < totalPages ; i++){
+			console.log('asasasasasa', i);
+			$("#data-tabel tbody tr").hide().slice(startPage, endPage).show();
+		};
+	})
 
 // Checked and unchecked list row
 	$('#data-tabel tr').click(function (event) {
-		var $target = $(event.target);
-		var rowTable = $("number, name, address");
-		console.log("ini baris tabel", rowTable);
-		if(!$target.is('input:checkbox'))
-		console.log('$target', $target);
+		let $target = $(event.target);
+		let rowTable = $("number, name, address");
+		if(!$target.is('input[type="checkbox"]'))
 		{
-			$(this).find('input:checkbox').each(function () {
+			$(this).find('input[type="checkbox"]').each(function () {
 				if(this.checked)this.checked = false;
 				else this.checked = true;
+				console.log("checkcheck", this.checked);
 			})
 		}
 		$(this).closest('tr').find('td').toggleClass('selectedRow');
 	});
+
+	// $("#table-selected-data").click(function(){
+	// 	// var isChecked = $(prop( "checked", true ));
+	// 	// console.log('selected data', isChecked);
+	// });
+	$("#btnShowSelectedData").click(function() {
+		var isChecked = $("checked");
+        console.log("selected data", isChecked);
+    	$("#table-selected-data tbody td").append(isChecked);
+  	});
+
+	// $("#btnShowSelectedData").click(function() {
+	// 	$("#table-selected-data tbody td").append("selectedRow");
+	// });	
+
  })

@@ -5,53 +5,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 	<title>Latihan-jquery</title>
 </head>
 <body>
 
-  <div>
+  <div id="tabel-profil">
     <table id="data-tabel">
       <thead>
         <tr>
-          <th></th>
-          <th>No.</th>
-          <th>Nama</th>
-          <th>Alamat</th>
+          <th scope="col"></th>
+          <th scope="col">No.</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Alamat</th>
         </tr>
       </thead>           
       <tbody>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td class="number"></td>
-          <td class="name"></td>
-          <td class="address"></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td class>2</td>
-          <td class>Nama-2</td>
-          <td class>Alamat-2</td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td class>3</td>
-          <td class>Nama-3</td>
-          <td class>Alamat-3</td>
-        </tr>
-        <!-- <tr>
-          <td><input type="checkbox"></td>
-          <td class>4</td>
-          <td class>Nama-4</td>
-          <td class>Alamat-4</td>
-        </tr>
-        <tr>
-          <td><input type="checkbox"></td>
-          <td class>5</td>
-          <td class>Nama-5</td>
-          <td class>Alamat-5</td>
-        </tr> -->
   		</tbody>
     </table>
 
@@ -74,15 +43,14 @@
       </tr>
     </thead> 
     <tbody>
-      <tr>
+      <tr id="selected-data">
         <td colspan="3">No Data</td>
         </tr>
     </tbody>
   </table>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="table.json"></script>
 <script type="text/javascript" src="script.js"></script>
 </body>

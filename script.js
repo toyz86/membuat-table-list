@@ -54,6 +54,7 @@ $(document).ready(function(){
 // Checked and unchecked list row
 	$('#data-tabel tr').click(function (event) {
 		let $target = $(event.target);
+		console.log('asdfsdkjb', $target);
 		if(!$target.is('input[type="checkbox"]'))
 		{
 			$(this).find('input[type="checkbox"]').each(function () {
@@ -63,30 +64,29 @@ $(document).ready(function(){
 			})
 		}
 		$(this).closest('tr').find('td').toggleClass('selectedRow');
+		rowSelected = $(this);
+		console.log('selected row', rowSelected);
 	});
 
-	// $("#table-selected-data").click(function(){
-	// 	// var isChecked = $(prop( "checked", true ));
-	// 	// console.log('selected data', isChecked);
-	// });
-	$("#btnShowSelectedData").click(function() {
-		let rowTr = '';
-		for (let i = 1; i < allItems;) {
-			rowTr += '<tr>';
-			rowTr += '<td>' + '</td>';
-			rowTr += "<td>" + i + "</td>";
-			rowTr += "<td>" + "Nama" + "-" + i + "</td>";
-			rowTr += "<td>" + "Alamat" + "-" + i + "</td>";
-			rowTr += "</tr>";
-		}
-		var isChecked = $("checked");
-		console.log("selected data", isChecked);
-		let rowTable = $("number, name, address");
-    	$("#table-selected-data tbody td").append(rowTr);
-  	});
-
-	// $("#btnShowSelectedData").click(function() {
-	// 	$("#table-selected-data tbody td").append("selectedRow");
-	// });	
-
+	$("#btnShowSelectedData").click(function(){
+		$("#table-selected-data").removeClass('.selectedRow');
+		let setRow = rowSelected.clone();
+		let getRow = $("#table-selected-data tbody");
+		getRow.append(setRow);
+		setRow++;
+		$("#table-selected-data td:first-child").hide();
+		// $("#table-selected-data td:first-child").remove();
+		// $("#table-selected-data").each(function(){
+		// 	$(this).find("td:first").remove();
+		// 	// // for (let i = 1; i < setRow.length; i++){
+		// 	// // 	alert(setRow.innerText);
+		// 	// }
+		// })
+	})
+			// $("#table-selected-data").each(function(){
+			// 	$(this).find("td:first-child").remove();
+			// 	// let boxSelected = $('input[type="checkbox"]');
+			// 	// console.log('box selected', boxSelected)
+			// 	// $(this).find(boxSelected).slice(1).remove();
+			// })
  })

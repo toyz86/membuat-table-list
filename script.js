@@ -57,32 +57,40 @@ $(document).ready(function () {
         let $target = $(event.target);
         // console.log('asdfsdkjb', $target);
         if (!$target.is('input[type="checkbox"]')) {
-            $(this).find('input[type="checkbox"]').each(function () {
+            $(this).find('input[type="checkbox"]').each(function(){
                 if (this.checked) this.checked = false;
                 else this.checked = true;
                 console.log("checkcheck", this.checked);
             })
+            rowSelected = $(this);
+            console.log('selected row', rowSelected);
+            $(this).closest('tr').find('td').toggleClass('selectedRow');
         }
-        $(this).closest('tr').find('td').toggleClass('selectedRow');
-        rowSelected = $(this);
-        console.log('selected row', rowSelected);
     });
 
-    $("#btnShowSelectedData").bind("click", function () {
-        if (rowSelected === false) {
-            return false;
-        } else {
-            let setRow = rowSelected.clone();
-            $("#table-selected-data tbody").append(setRow);
-            $("#table-selected-data td").removeClass('selectedRow');
-            $("#table-selected-data td:first-child").hide();
-        }
-        // $("#table-selected-data td:first-child").remove();
-        // $("#table-selected-data").each(function(){
-        //  $(this).find("td:first").remove();
-        //  // // for (let i = 1; i < setRow.length; i++){
-        //  // //   alert(setRow.innerText);
-        //  // }
-        // })
-    })
+    // $("#btnShowSelectedData").click(function(event){
+    //     $("#data-tabel input:checked").each(function(){
+    //         if ($(this).is(":checked")){
+    //             var getItems = $("#data-tabel input:checked")
+    //               .parents("tr")
+    //               .clone()
+    //               .appendTo($("#table-selected-data tbody").add(getItems));
+    //             $("#table-selected-data td:first-child").hide();
+    //             $("#table-selected-data td").removeClass("selectedRow");
+    //         }  else {
+    //             $(this).is(':not(:checked)');{
+    //                 $("#table-selected-data tbody").hide("#table-selected-data tbody");
+    //             }
+    //         }
+    //     })
+    // })
+
+    $("#btnShowSelectedData").click(function() {
+          var getItems = $("#data-tabel input:checked")
+            .parents("tr")
+            .clone()
+            .appendTo($("#table-selected-data tbody").add(getItems));
+          $("#table-selected-data td:first-child").hide();
+          $("#table-selected-data td").removeClass("selectedRow");
+    });
 })

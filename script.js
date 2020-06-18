@@ -68,29 +68,17 @@ $(document).ready(function () {
         }
     });
 
-    // $("#btnShowSelectedData").click(function(event){
-    //     $("#data-tabel input:checked").each(function(){
-    //         if ($(this).is(":checked")){
-    //             var getItems = $("#data-tabel input:checked")
-    //               .parents("tr")
-    //               .clone()
-    //               .appendTo($("#table-selected-data tbody").add(getItems));
-    //             $("#table-selected-data td:first-child").hide();
-    //             $("#table-selected-data td").removeClass("selectedRow");
-    //         }  else {
-    //             $(this).is(':not(:checked)');{
-    //                 $("#table-selected-data tbody").hide("#table-selected-data tbody");
-    //             }
-    //         }
-    //     })
-    // })
-
     $("#btnShowSelectedData").click(function() {
-          var getItems = $("#data-tabel input:checked")
-            .parents("tr")
-            .clone()
-            .appendTo($("#table-selected-data tbody").add(getItems));
-          $("#table-selected-data td:first-child").hide();
-          $("#table-selected-data td").removeClass("selectedRow");
+        $("#data-tabel tbody tr").each(function(){
+            $("#table-selected-data tbody tr").not("#selected-data tr").remove();
+                var getItems = $("#data-tabel input:checked")
+                .parents("tr")
+                .clone()
+                .appendTo($("#table-selected-data tbody").add(getItems));
+                $("#table-selected-data td:first-child").hide();
+                $("#table-selected-data td").removeClass("selectedRow");
+                $("#table-selected-data tbody tr").show();
+        })
+        
     });
 })
